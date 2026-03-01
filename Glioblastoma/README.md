@@ -135,7 +135,6 @@ Measured as CXCR1 fold-induction over ligand-only baseline. Gain ≥ 2× = self-
 ## Features
 
 - ⚡ **Full in-browser RK4 solver** — zero installation, runs on any device
-- 🔬 **Pre-ODE loop screening** — 2×2 matrix classifier (vicious/virtuous × amplifying/suppressing)
 - 🤖 **Auto-optimiser** — hill-climbing across 5 biological targets simultaneously
 - 🕸 **Interactive signalling network** — vis.js graph with drug target annotations
 - 📊 **10 Plotly charts** — all state variables, loop intensity, proliferation decomposition

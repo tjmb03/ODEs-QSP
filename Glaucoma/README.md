@@ -193,6 +193,23 @@ After calibration:  L ≈ 5.5–6.6× (supercritical — self-sustaining)
 By t_end the cascade has resolved — M1 ≈ 0, Cyt_pro ≈ 0 — making the endpoint cytokine fraction appear near-zero even when it dominated during active disease. All biological targets are evaluated at the peak total RGC death rate (typically days 15–60).
 
 
+## Metrics Scorecard after PyABC
+
+![Scorecard](figures/fig10_scorecard.png)
+
+## Sensitivity Analysis
+
+![Scorecard](figures/fig11_scorecard.png)
+
+## Uncertainty Quantification
+
+![Scorecard](figures/fig12_scorecard.png)
+
+## LHS-Exploratory
+
+![Scorecard](figures/fig13_scorecard.png)
+
+
 ---
 
 ## Features

@@ -197,7 +197,7 @@ By t_end the cascade has resolved — M1 ≈ 0, Cyt_pro ≈ 0 — making the end
 
 ## Features
 
-- ⚡ **Full in-browser RK4 solver** — zero installation, runs on any device
+- ⚡ **Integration** — Seamlessly expandable with DE, PyABC, and SIAN/DAISY, and fully compatible with MATLAB SimBiology
 - ⚙️ **ODE generator** — auto-writes JS, R, and mathematical equations for each loop classification
 - 🤖 **Auto-optimiser** — 10-rule cascade calibrating to 6 biological targets with loop gain priority (R0)
 - 📊 **Loop gain diagnostic** — live L calculation, colour-coded ✓/✗ in stat cards and target bar

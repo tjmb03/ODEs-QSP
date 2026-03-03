@@ -209,6 +209,11 @@ By t_end the cascade has resolved — M1 ≈ 0, Cyt_pro ≈ 0 — making the end
 
 ![Scorecard](figures/fig13_scorecard.png)
 
+## SimBiology-profile likelihood identifiability
+
+![Scorecard](figures/profile_likelihood.png)
+
+>Interpretation: The complement activation axis is statistically identifiable and biologically supported, while downstream cytokine dynamics contain redundant or weakly informed parameters.
 
 ---
 

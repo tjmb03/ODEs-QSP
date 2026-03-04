@@ -193,6 +193,44 @@ After calibration:  L ≈ 5.5–6.6× (supercritical — self-sustaining)
 By t_end the cascade has resolved — M1 ≈ 0, Cyt_pro ≈ 0 — making the endpoint cytokine fraction appear near-zero even when it dominated during active disease. All biological targets are evaluated at the peak total RGC death rate (typically days 15–60).
 
 
+
+## Identifiability Analysis — Three Independent Methods
+
+A central contribution of this work is a multi-method identifiability analysis
+cross-validating Bayesian and frequentist approaches against an algebraic structural proof.
+
+### Method 1 — ABC-SMC (Approximate Bayesian Computation)
+
+[PyABC](https://pyabc.readthedocs.io/) with `MulticoreEvalParallelSampler`.
+Identifiability assessed via the posterior/prior width ratio:
+
+| Ratio | Interpretation |
+|---|---|
+| < 0.4 | ✓ Identifiable — data strongly constrains parameter |
+| 0.4 – 0.8 | △ Partial — data provides some information |
+| > 0.8 | ⚠ Non-identifiable — posterior ≈ prior |
+
+### Method 2 — Profile Likelihood (frequentist)
+
+Implemented manually in MATLAB (required because `sbioproflik` accepts only
+`NLINResults`; `fminsearch` returns `OptimResults`). For each parameter θᵢ,
+fix it at N grid points and minimise SSE over all other parameters:
+
+```
+-2·ΔLL(θᵢ) = [SSE(θᵢ) − SSE_min] / (SSE_min / DFE)
+```
+
+**Identifiable** → U-shaped curve; both arms cross χ² threshold → finite CI  
+**Partial** → one arm flat; only one-sided bound  
+**Non-identifiable** → flat across entire range
+
+### Method 3 — SIAN / DAISY (structural identifiability)
+
+Algebraic proof that certain parameters are structurally non-identifiable from
+the current output set {RPE, RGC, M1, C1q}, independent of data quality or sample
+size. Analysis specifies the exact additional outputs required.
+
+### Results
 ## Metrics Scorecard after PyABC
 
 ![Scorecard](figures/fig10_scorecard.png)
@@ -213,7 +251,7 @@ By t_end the cascade has resolved — M1 ≈ 0, Cyt_pro ≈ 0 — making the end
 
 ![Scorecard](figures/profile_likelihood.png)
 
->Interpretation: The complement activation axis is statistically identifiable and biologically supported, while downstream cytokine dynamics contain redundant or weakly informed parameters.
+>Interpretation: The complement loop gain and trans-synaptic coupling are identifiable from current outputs, while parameters governing cytokine-mediated cell death and early DAMP-driven microglial activation are non-identifiable due to confounding with unobserved intermediate states — not redundancy.
 
 ---
 

@@ -253,11 +253,8 @@ Measured as CXCR1 fold-induction over ligand-only baseline. Gain ≥ 2× = self-
 
 ## Access
 
-**The source code for this tool is available on request.**
-
-> ⚠️ Unauthorised copying, redistribution, or modification of the source code is prohibited.  
-> © 2026 tjmb03. All rights reserved.
-
+> © 2026 tjmb03. This project is provided for educational and methodological
+demonstration purposes. Source code for the interactive dashboards is **available on request** for academic and research use.
 ---
 
 *Built with Plotly.js · vis-network · pure in-browser RK4 · jsPDF · html2canvas*

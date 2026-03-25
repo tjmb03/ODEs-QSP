@@ -271,11 +271,8 @@ size. Analysis specifies the exact additional outputs required.
 
 ## Access
 
-**The source code for this tool is available on request.**
-
-> ⚠️ Unauthorised copying, redistribution, or modification of the source code is prohibited.  
-> © 2025 tjmb03. All rights reserved.
-
+> © 2026 tjmb03. This project is provided for educational and methodological
+demonstration purposes. Source code for the interactive dashboards is **available on request** for academic and research use.
 ---
 
 *Built with Plotly.js · vis-network · pure in-browser RK4 · jsPDF · html2canvas*

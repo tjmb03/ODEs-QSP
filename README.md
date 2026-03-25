@@ -51,7 +51,6 @@ ODEs-QSP/
     └── README.md           ← model documentation & results
 ```
 
-Source code for the interactive dashboards is **available on request** for academic and research use.
 
 ---
 
@@ -60,4 +59,5 @@ Source code for the interactive dashboards is **available on request** for acade
 **Author:** tjmb03  
 
 
-> © 2026 tjmb03. All rights reserved. Unauthorised copying or redistribution of source code is prohibited.
+> © 2026 tjmb03. Source code for the interactive dashboards is **available on request** for academic and research use.
+

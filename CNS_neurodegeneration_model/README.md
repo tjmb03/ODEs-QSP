@@ -1,4 +1,10 @@
-# QSP Glaucoma v5.5 — Complement-Driven Neurodegeneration Dashboard
+> **Note:** All model parameters in this subfolder are pseudodata 
+> generated programmatically in R for methodological demonstration. 
+> Parameter ranges are informed by published literature (see references) 
+> but no values are derived from proprietary experimental data, internal 
+> assay results, or employer-affiliated sources.
+
+# QSP CNS_neurodegeneration_model v5.5 — Complement-Driven Neurodegeneration Dashboard
 
 > **A quantitative systems pharmacology (QSP) model of normal-tension glaucoma (NTG) implementing the RPE–DAMPs–complement–microglial vicious cycle with intravitreal peptide therapy intervention.**
 
@@ -272,7 +278,7 @@ size. Analysis specifies the exact additional outputs required.
 ## Access
 
 > © 2026 tjmb03. This project is provided for educational and methodological
-demonstration purposes. Source code for the interactive dashboards is **available on request** for academic and research use.
+demonstration purposes.
 ---
 
 *Built with Plotly.js · vis-network · pure in-browser RK4 · jsPDF · html2canvas*

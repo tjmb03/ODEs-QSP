@@ -1,4 +1,10 @@
-# QSP Glioblastoma v1.0 — rAAV/shRNA Gene Therapy Dashboard
+> **Note:** All model parameters in this subfolder are pseudodata 
+> generated programmatically in R for methodological demonstration. 
+> Parameter ranges are informed by published literature (see references) 
+> but no values are derived from proprietary experimental data, internal 
+> assay results, or employer-affiliated sources.
+
+# QSP CNS_oncology_model v1.0 — rAAV/shRNA Gene Therapy Dashboard
 
 > **A quantitative systems pharmacology (QSP) model of glioblastoma (GBM) implementing the DNA-PK/MYT1L-CXCR1-ERK1/2 positive feedback loop with rAAV-delivered shRNA gene therapy intervention.**
 
@@ -254,7 +260,7 @@ Measured as CXCR1 fold-induction over ligand-only baseline. Gain ≥ 2× = self-
 ## Access
 
 > © 2026 tjmb03. This project is provided for educational and methodological
-demonstration purposes. Source code for the interactive dashboards is **available on request** for academic and research use.
+demonstration purposes.
 ---
 
 *Built with Plotly.js · vis-network · pure in-browser RK4 · jsPDF · html2canvas*

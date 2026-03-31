@@ -19,7 +19,7 @@ Each model implements a disease-specific ODE system with a paired therapeutic in
 
 ## Projects
 
-### 🧠 [CNS_oncology_model (GBM) — rAAV/shRNA Gene Therapy](./Glioblastoma)
+### 🧠 [CNS_oncology_model (GBM) — rAAV/shRNA Gene Therapy](./CNS_oncology_model)
 
 Models the **DNA-PK/MYT1L-CXCR1-ERK1/2 positive feedback loop** in GBM and its disruption by rAAV-delivered shRNA. The loop drives autocrine CXCR1 amplification and ERK-mediated proliferation — a self-sustaining vicious cycle targeted by post-transcriptional gene silencing.
 
@@ -33,7 +33,7 @@ Models the **DNA-PK/MYT1L-CXCR1-ERK1/2 positive feedback loop** in GBM and its d
 
 ---
 
-### 👁 [CNS_neurodegeneration_model — Complement-Driven Neurodegeneration](./Glaucoma)
+### 👁 [CNS_neurodegeneration_model — Complement-Driven Neurodegeneration](./CNS_neurodegeneration_model)
 
 Models the **RPE–DAMPs–complement–microglial vicious cycle** in normal-tension glaucoma (NTG) and its disruption by an intravitreal peptide with three simultaneous PD mechanisms.
 Quantifies the drug-accessible cytokine death fraction versus the structural trans-synaptic fraction that defines the therapeutic efficacy ceiling.

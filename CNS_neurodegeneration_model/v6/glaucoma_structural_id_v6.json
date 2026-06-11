@@ -1,0 +1,34 @@
+{
+  "structural_rank": 11,
+  "n_par": 11,
+  "operating_point_practical_rank": 9,
+  "operating_point_structural_rank": 11,
+  "sian_result": "all 11 params + 15 states locally structurally identifiable",
+  "interpretation": "death-pathway degeneracy is practical (operating-regime collinearity + weak sensitivity), not structural",
+  "singular_values_operating": [
+    120.22813724417287,
+    5.552725067911214,
+    3.0909939148265027,
+    2.1079875750901786,
+    1.3269975073634674,
+    0.6231168570574155,
+    0.4271223275304208,
+    0.2598240520741412,
+    0.24345624712704675,
+    0.05103459319644072,
+    0.009955504870113647
+  ],
+  "column_norms": {
+    "k_C1q_M1": 62.29664529726399,
+    "k_C3_cleave": 61.1331657659439,
+    "k_C3aR_act": 48.69856791978723,
+    "k_damp_M1": 12.257441741545751,
+    "k_rpe_cyt": 0.2889396765151171,
+    "k_rgc_rpe": 4.250790169525793,
+    "k_rgc_cyt": 0.3300104255086818,
+    "k_mig_damp": 50.15949608829589,
+    "k_M1_switch": 42.46730838761463,
+    "k_des_on": 4.87337860088887,
+    "K_anti_M1": 0.8405852452073003
+  }
+}

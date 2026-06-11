@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.ipynb_checkpoints/
+
+# Julia
+Manifest.toml
+
+# data / scratch
+*.db
+
+# OS / editor
+.DS_Store
+*.swp
+.vscode/

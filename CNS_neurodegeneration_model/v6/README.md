@@ -273,7 +273,8 @@ See `glaucoma_v6_identifiability_results.md` for the full written analysis.
 
 ## Reference
 
-Gao et al. (2026), complement–microglia feedback in normal-tension glaucoma.
+Gao et al. (2026), Retinal degenerative diseases: Complement system–microglia crosstalk. Survey of Ophthalmology. 2026;71:346–360.
+— Source for the C1q → C3 → C3a/C5a → C3aR/C5aR1 → microglia → C1q positive-feedback loop. (Review covering AMD, diabetic retinopathy, glaucoma, and pathological myopia — not NTG-specific.)
 
 > © 2026 tjmb03. Provided for educational and methodological demonstration purposes.
 

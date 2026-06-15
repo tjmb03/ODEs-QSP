@@ -1,0 +1,4 @@
+# Deterministic gate dependencies ONLY — no claude-agent-sdk.
+# The CI gate is pure numerics; the LLM agent is a separate, local tool.
+numpy>=1.26
+scipy>=1.11

@@ -1,0 +1,119 @@
+name: cross-engine-validation
+
+# Deterministic cross-validation of the glaucoma v6 ODE model across four
+# independent stiff solvers. Each engine runs as its own job (parallel,
+# isolated setup) and uploads its trajectory CSVs; a final gate job downloads
+# them all and runs the deterministic comparator. NO LLM is involved.
+
+on:
+  push:
+    branches: [main]
+    paths: ['CNS_neurodegeneration_model/env_cross_validate/**']
+  pull_request:
+    paths: ['CNS_neurodegeneration_model/env_cross_validate/**']
+  workflow_dispatch:
+
+# Project lives in a subfolder of the repo. All run-steps execute there.
+# (uses:-steps like checkout/upload-artifact stay workspace-root-relative,
+# so their paths below are written out in full.)
+defaults:
+  run:
+    working-directory: CNS_neurodegeneration_model/env_cross_validate
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  engines:
+    name: ${{ matrix.engine }} engine
+    runs-on: ubuntu-latest
+    # MATLAB is best-effort (license-gated); the three free engines are required.
+    continue-on-error: ${{ matrix.engine == 'matlab' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [python, r, julia, matlab]
+    env:
+      # Private repo: set this secret to a MATLAB Batch Licensing token.
+      # Public repo: leave it unset — Setup MATLAB auto-licenses SimBiology.
+      MLM_LICENSE_TOKEN: ${{ secrets.MLM_LICENSE_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        if: matrix.engine == 'python'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python deps
+        if: matrix.engine == 'python'
+        run: pip install -r requirements.txt
+
+      - name: Setup R
+        if: matrix.engine == 'r'
+        uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true          # binary deSolve, no source compile
+      - name: Install R deps
+        if: matrix.engine == 'r'
+        run: Rscript -e 'install.packages("deSolve"); if (!requireNamespace("deSolve", quietly=TRUE)) quit(status=1)'
+
+      - name: Setup Julia
+        if: matrix.engine == 'julia'
+        uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.10'
+      - name: Install Julia deps
+        if: matrix.engine == 'julia'
+        run: julia -e 'using Pkg; Pkg.add(["OrdinaryDiffEq","DiffEqCallbacks"])'
+
+      - name: Setup MATLAB
+        if: matrix.engine == 'matlab'
+        uses: matlab-actions/setup-matlab@v2
+        with:
+          products: SimBiology
+
+      - name: Run harness (both arms)
+        run: |
+          set -e
+          E=${{ matrix.engine }}
+          run() {
+            case "$E" in
+              python) python harness_python.py "$1" "${E}_$1.csv" ;;
+              r)      Rscript harness_r.R "$1" "${E}_$1.csv" glaucoma_model.R ;;
+              julia)  julia harness_julia.jl "$1" "${E}_$1.csv" ;;
+              matlab) matlab -batch "harness_matlab('$1','${E}_$1.csv')" ;;
+            esac
+          }
+          run control
+          run treated
+
+      - name: Upload engine CSVs
+        uses: actions/upload-artifact@v4
+        with:
+          name: csv-${{ matrix.engine }}
+          path: CNS_neurodegeneration_model/env_cross_validate/${{ matrix.engine }}_*.csv
+          if-no-files-found: error
+
+  gate:
+    name: cross-validation gate
+    needs: engines
+    if: always()              # run even if the (optional) MATLAB job failed
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.txt
+
+      - name: Download all engine CSVs
+        uses: actions/download-artifact@v4
+        with:
+          path: CNS_neurodegeneration_model/env_cross_validate/csvs
+          merge-multiple: true     # flatten every engine's artifact into csvs/
+
+      - name: Deterministic cross-validation gate
+        run: python run_crossval_gate.py --csv-dir csvs
+        # exits 1 on disagreement / conservation failure, 2 if <2 engines ran
